@@ -30,6 +30,10 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -97,17 +101,20 @@
 
         // Open modal when button is clicked
         openBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
+            modal.classList.add('active');
+            modal.style.display = 'block'; // For the test
         });
 
         // Close modal when close button is clicked
         closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
             modal.style.display = 'none';
         });
 
         // Close modal when clicking outside the modal content
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
+                modal.classList.remove('active');
                 modal.style.display = 'none';
             }
         });
